@@ -6,6 +6,7 @@ import 'rxjs/add/operator/map';
 
 import {SlimLoadingBarService} from 'ng2-slim-loading-bar';
 
+const Trianglify = require('trianglify');
 
 @Component({
   selector: 'app-root',
@@ -15,7 +16,7 @@ import {SlimLoadingBarService} from 'ng2-slim-loading-bar';
 export class AppComponent implements OnInit {
   private tickersUrl = 'https://bitcoin-markets-api.herokuapp.com/ticker/btcpln';
 
-  price = '???';
+  price = '';
 
   constructor (private http: Http,
                private slimLoadingBarService: SlimLoadingBarService) {}
@@ -72,5 +73,12 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.updatePrice();
+
+
+    let pattern = Trianglify({
+      width: window.innerWidth,
+      height: window.innerHeight
+    });
+    document.body.appendChild(pattern.svg());
   }
 }
