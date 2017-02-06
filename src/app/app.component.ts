@@ -4,18 +4,21 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
 
+import {SlimLoadingBarService} from 'ng2-slim-loading-bar';
+
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
   private tickersUrl = 'https://bitcoin-markets-api.herokuapp.com/ticker/btcpln';
 
   price = '???';
 
-  constructor (private http: Http) {}
+  constructor (private http: Http,
+               private slimLoadingBarService: SlimLoadingBarService) {}
 
   getTickers() {
     // console.log(this.http);
@@ -57,7 +60,9 @@ export class AppComponent implements OnInit {
   }
 
   private updatePrice() {
+    this.slimLoadingBarService.start();
     this.getTickers().subscribe(res => {
+      this.slimLoadingBarService.complete();
       let price = this.calcVWAP(res).toFixed(2);
       this.price = price;
       document.title = price;
