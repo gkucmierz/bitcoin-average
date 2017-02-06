@@ -43,9 +43,22 @@ export class AppComponent implements OnInit {
     return Observable.throw(errMsg);
   }
 
+  // Volume Weighted Average Price
+  private calcVWAP(tickers) {
+    let keys = Object.keys(tickers).filter(key => {
+      let ticker = tickers[key].ticker;
+      return 'vwap' in ticker && 'vol' in ticker;
+    });
+    let mergedVolume = keys.reduce((vol, key) => vol + tickers[key].ticker.vol, 0);
+    let vwap = keys.reduce((vwap, key) => {
+      return vwap + (tickers[key].ticker.vwap * tickers[key].ticker.vol) / mergedVolume;
+    }, 0);
+    return vwap;
+  }
+
   private updatePrice() {
     this.getTickers().subscribe(res => {
-      let price = res['bitmarket.pl'].ticker.vwap.toFixed(2);
+      let price = this.calcVWAP(res).toFixed(2);
       this.price = price;
       document.title = price;
       setTimeout(() => this.updatePrice(), 5e3);
