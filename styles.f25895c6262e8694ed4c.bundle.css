@@ -1,0 +1,5 @@
+/*!
+ * Copyright (C) 2016 Sergey Akopkokhyants
+ * This project is licensed under the terms of the MIT license.
+ * https://github.com/akserg/ng2-slim-loading-bar
+ */.slim-loading-bar{position:fixed;margin:0;padding:0;top:0;left:0;right:0;z-index:99999}.slim-loading-bar-progress{margin:0;padding:0;z-index:99998;background-color:green;color:green;box-shadow:0 0 10px 0;height:2px;opacity:0;-webkit-transition:all .5s ease-in-out;transition:all .5s ease-in-out}svg{z-index:-1;position:absolute;top:0;left:0;height:100%!important;width:100%!important}
