@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 
 import * as Trianglify from 'trianglify';
 
@@ -13,6 +14,13 @@ const round = (size: number) => Math.ceil(size / roundStep) * roundStep;
 export class AppComponent implements OnInit {
   width: number;
   height: number;
+  price = '';
+
+  constructor(private http: HttpClient) {
+    this.http.get('https://blockchain.info/tobtc?currency=USD&value=1').subscribe((data: number) => {
+      this.price = (1 / data).toFixed(2);
+    });
+  }
 
   onResize(event) {
     const newWidth = round(event.target.innerWidth);
