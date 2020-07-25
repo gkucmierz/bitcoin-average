@@ -1,0 +1,16 @@
+{
+  "hosting": {
+    "public": "dist/bitcoin-average",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
+    ]
+  }
+}
