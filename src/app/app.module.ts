@@ -5,10 +5,12 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { ForkMeComponent } from './fork-me/fork-me.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    ForkMeComponent
   ],
   imports: [
     BrowserModule,

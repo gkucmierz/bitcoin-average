@@ -50,7 +50,7 @@ export class AppComponent implements OnInit {
       width: this.width,
       height: this.height
     });
-    const svg = document.querySelector('.svg');
+    const svg = document.querySelector('.background');
     svg.textContent = '';
     svg.appendChild(pattern.toSVG());
   }
