@@ -20,6 +20,7 @@ export class AppComponent implements OnInit {
   width: number;
   height: number;
   price = '';
+  originalTitle = '';
 
   constructor(private http: HttpClient) {
     const getPrice = () => this.http.get('https://blockchain.info/tobtc?currency=USD&value=1').pipe(
@@ -31,7 +32,8 @@ export class AppComponent implements OnInit {
     ).subscribe(price => {
       const strPrice = price.toFixed(2);
       this.price = strPrice;
-      window.document.title = strPrice;
+      if(!this.originalTitle) this.originalTitle = window.document.title;
+      window.document.title = `${strPrice} - ${this.originalTitle}`;
     });
   }
 
