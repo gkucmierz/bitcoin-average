@@ -29,7 +29,9 @@ export class AppComponent implements OnInit {
     timer(0, TIMEOUT).pipe(
       flatMap(getPrice)
     ).subscribe(price => {
-      this.price = price.toFixed(2);
+      const strPrice = price.toFixed(2);
+      this.price = strPrice;
+      window.document.title = strPrice;
     });
   }
 
