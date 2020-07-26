@@ -3,6 +3,11 @@ import { HttpClient } from '@angular/common/http';
 
 import * as Trianglify from 'trianglify';
 
+import { timer } from 'rxjs';
+import { map, flatMap } from 'rxjs/operators'
+
+const TIMEOUT = 1e3 * 15;
+
 const roundStep = 200;
 const round = (size: number) => Math.ceil(size / roundStep) * roundStep;
 
@@ -17,8 +22,14 @@ export class AppComponent implements OnInit {
   price = '';
 
   constructor(private http: HttpClient) {
-    this.http.get('https://blockchain.info/tobtc?currency=USD&value=1').subscribe((data: number) => {
-      this.price = (1 / data).toFixed(2);
+    const getPrice = () => this.http.get('https://blockchain.info/tobtc?currency=USD&value=1').pipe(
+      map((data: number) => 1 / data)
+    );
+
+    timer(0, TIMEOUT).pipe(
+      flatMap(getPrice)
+    ).subscribe(price => {
+      this.price = price.toFixed(2);
     });
   }
 
