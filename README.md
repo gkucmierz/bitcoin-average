@@ -6,7 +6,7 @@ Simple Progressive Web App (PWA) that is displaying BTC price
 
 ![screenshot](readme/Zrzut%20ekranu%202020-07-28%20o%2018.22.14.png)
 
-### Development server
+### Development Server
 
 ```npm run start```
 
