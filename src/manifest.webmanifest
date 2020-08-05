@@ -1,6 +1,6 @@
 {
-  "name": "bitcoin-average",
-  "short_name": "bitcoin-average",
+  "name": "Bitcoin Average",
+  "short_name": "BTC Average",
   "theme_color": "#1976d2",
   "background_color": "#fafafa",
   "display": "standalone",
