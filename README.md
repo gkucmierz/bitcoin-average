@@ -1,3 +1,8 @@
+# Moved to new repo:
+
+https://github.com/gkucmierz/bitcoin-average-vue
+
+
 # BTC Average
 
 Simple Progressive Web App (PWA) that is displaying BTC price
